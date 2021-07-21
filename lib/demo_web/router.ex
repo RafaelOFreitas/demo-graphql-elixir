@@ -5,18 +5,13 @@ defmodule DemoWeb.Router do
     plug :accepts, ["json"]
   end
 
-  scope "/api", DemoWeb do
-    pipe_through :api
-  end
-
-  scope "/" do
+  scope "/api" do
     pipe_through :api
 
-    forward "/graphiql", Absinthe.Plug.GraphiQL,
-      schema: DemoWeb.Schema,
-      interface: :simple,
-      context: %{pubsub: DemoWeb.Endpoint}
   end
+
+  forward "/graph", Absinthe.Plug, schema: GraphQLWeb.Schema
+  forward "/graphiql", Absinthe.Plug.GraphiQL, schema: GraphQLWeb.Schema, interface: :advanced, context: %{pubsub: DemoWeb.Endpoint}
 
   # Enables LiveDashboard only for development
   #

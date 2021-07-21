@@ -1,4 +1,4 @@
-defmodule DemoWeb.NewsResolver do
+defmodule GraphQLWeb.NewsResolver do
   alias Demo.News
 
   def all_links(_root, _args, _info) do

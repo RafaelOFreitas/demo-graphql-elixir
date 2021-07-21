@@ -1,7 +1,7 @@
-defmodule DemoWeb.Schema do
+defmodule GraphQLWeb.Schema do
   use Absinthe.Schema
 
-  alias DemoWeb.NewsResolver
+  alias GraphQLWeb.NewsResolver
 
   object :link do
     field :id, non_null(:id)
